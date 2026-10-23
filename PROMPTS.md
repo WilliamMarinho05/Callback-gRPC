@@ -1118,3 +1118,24 @@ O `if` evita erro se nunca houve acompanhamento; `cancel(null)` cancela (sem exc
 - [ ] Testar o cancelamento (fechar o Totem no meio).
 - [ ] Testar uma segunda senha com a primeira em andamento.
 - [ ] Revisar os slides e ensaiar o roteiro de 8 minutos.
+
+
+---
+
+---
+
+## Referências Oficiais da Documentação gRPC
+
+A implementação do mecanismo de **Server Streaming (Callback)** e o **Tratamento de Cancelamento** no projeto seguiu rigorosamente a documentação e os padrões oficiais do gRPC:
+
+### 1. Server Streaming RPC
+* **Link Oficial:** [gRPC Core Concepts - Server Streaming RPC](https://grpc.io/docs/what-is-grpc/core-concepts/#server-streaming-rpc)
+* **Trecho da Documentação:**
+  > *"In a server-streaming RPC, the client sends a request to the server and gets a stream to read a sequence of messages back. The client reads from the returned stream until there are no more messages."*
+* **Aplicação no Projeto:** Aplicado na declaração do `.proto` (`rpc AcompanharSenha (Senha) returns (stream Aviso);`) e no envio contínuo das mensagens ("faltam 3", "faltam 2", "sua vez") pela Central usando `StreamObserver<Aviso>`.
+
+### 2. Cancellation (Tratamento de Desconexão)
+* **Link Oficial:** [gRPC Guides - Cancellation](https://grpc.io/docs/guides/cancellation/)
+* **Trecho da Documentação:**
+  > *"When an RPC is cancelled, the server should stop any ongoing computation and end its side of the stream."*
+* **Aplicação no Projeto:** Aplicado no Totem ao fechar a janela (`contextoAcompanhamento.cancel(null)`) e na Central escutando o encerramento com `ServerCallStreamObserver.setOnCancelHandler(...)` e interrompendo o envio com `fluxo.isCancelled()`.
