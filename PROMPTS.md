@@ -1,12 +1,6 @@
-# PROMPTS.md: Central de Senhas com gRPC (Callback / Server Streaming)
+# PROMPTS.md - Callback
 
 Registro cronológico dos prompts enviados à IA no projeto de Sistemas Distribuídos, com espaços para o grupo registrar as respostas e decisões. O material técnico gerado nas respostas está reunido nos anexos, ao final.
-
-> **Notas**
-> - Conforme a instrução anterior de descartar um trecho da conversa, esse trecho **não** foi incluído.
-> - Os campos de "Registro da resposta e das decisões do grupo" estão vazios de propósito, para preenchimento manual.
-> - O `initComponents()` do `TelaTotem.java` é código gerado pelo NetBeans: aparece completo no Prompt 4 (código original enviado) e abreviado no Anexo D.
-> - Elementos visuais (fluxogramas, slides) foram convertidos para ASCII, Mermaid e tabelas.
 
 ## Sumário
 
@@ -16,13 +10,6 @@ Registro cronológico dos prompts enviados à IA no projeto de Sistemas Distribu
 | [Prompt 2](#prompt-2--explicação-didática-da-parte-1-e-proto-idêntico) | Explicação didática da Parte 1 e `.proto` idêntico |
 | [Prompt 3](#prompt-3--parte-2-central-servidor) | Parte 2: Central (Servidor) |
 | [Prompt 4](#prompt-4--parte-3-totem-cliente-telatotemjava) | Parte 3: Totem (`TelaTotem.java`) |
-| [Prompt 5](#prompt-5--roteiro-de-fala-da-parte-1-da-apresentação) | Roteiro de fala da Parte 1 da apresentação |
-| [Prompt 6](#prompt-6--conteúdo-dos-slides-da-parte-1) | Conteúdo dos slides da Parte 1 |
-| [Prompt 7](#prompt-7--geração-do-arquivo-final-dos-slides) | Geração do arquivo final dos slides |
-| [Prompt 8](#prompt-8--conversão-da-conversa-em-promptsmd) | Conversão da conversa em `PROMPTS.md` |
-| [Prompt 9](#prompt-9--reorganização-do-promptsmd-por-prompt) | Reorganização do `PROMPTS.md` por prompt |
-| [Anexos](#anexos--material-técnico-gerado-nas-respostas) | Material técnico gerado nas respostas |
-
 ---
 
 ## Prompt 1 — Pedido inicial e Parte 1: arquivo `.proto`
@@ -108,19 +95,19 @@ Por favor, forneça primeiro apenas as alterações do arquivo .proto com as exp
 
 **O que a IA respondeu:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Respondeu com o arquivo .proto, acrescentando a declaração do server especifico pro streaming das mensagens e inicializou o aviso (as mensagens enviadas)
 
 **O que aceitamos da resposta:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Aceitamos tudo, o código gerado é simples e inicia a parte da mensagem e o server streaming corretamente no .proto 
 
 **O que mudamos ou recusamos:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Nada dessa resposta foi recusada
 
 **Por quê?**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+O código gerado é simples, organizado e acima de tudo está correto
 
 ---
 
@@ -134,20 +121,19 @@ Nessa parte 1, explique de forma didática o que aconteceu no código. Também a
 
 **O que a IA respondeu:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Gerou uma explicação sobre o que ele fez na resposta do primeiro prompt, abordou sobre a necessidade do .proto ser idêntico nos dois projetos, também apontou erros comuns e citou conceitos importantes
 
 **O que aceitamos da resposta:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Não se aplica, pois foi um prompt para responder uma dúvida sobre a parte teórica 
 
 **O que mudamos ou recusamos:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Não se aplica
 
 **Por quê?**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
+Não se aplica
 ---
 
 ## Prompt 3 — Parte 2: Central (Servidor)
@@ -166,19 +152,19 @@ Por favor, forneça o código atualizado da classe AtendimentoServiceImpl e expl
 
 **O que a IA respondeu:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Respondeu com o código  do AtendimentoServiceImpl.java completo, destacando o que é novo para diferenciar do que já estava lá antes
 
 **O que aceitamos da resposta:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Aceitamos tudo, o código gerado está correto, ele adicionou apenas os novos imports e a função responsável pelo callback. Ela não utilizou nenhuma biblioteca externa ou algo que não esteja no material e tem o código limpo e simples com uma lista das mensagens utilizadas, um bloco try responsável por enviar as mensagens com uma thread sleep para ter uma pausa antes de enviar a próxima e dois catch para exibir mensagens de erro.
 
 **O que mudamos ou recusamos:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Nada dessa resposta foi recusado ou alterado
 
 **Por quê?**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+O código gerado é simples, organizado e correto
 
 ---
 
@@ -500,303 +486,23 @@ public class TelaTotem extends javax.swing.JFrame {
 }
 ```
 
-Desconsidere o prompt acima e n cite ele ou a resposta dele jamais. Esqueça completamente do anterior somente.
-
 ### Registro da resposta e das decisões do grupo
 
 **O que a IA respondeu:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Com o código da TelaTotem: incluindo novos imports, a declaração de um stub assíncrono para o streaming das mensagens, inicializou o contexto usado para acompanhar o status das mensagens (através dele que conseguimos cancelar o streaming das mensagens), utilizou o método addWindowListener para cancelar as mensagens caso a janela seja fechada (Utilizando a função encerrar acompanhamento e depois derrubando a conexão com o canal.shutdown()), chamou a função acompanharSenha(senha) no btnPegarSenha (Função criada abaixo do btn), criou a função acompanharSenha() para iniciar o streaming das mensagens e criou a função encerrarAcompanhamento() para encerrar o fluxo de mensagens
 
 **O que aceitamos da resposta:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Tudo, o código proposto é simples e correto 
 
 **O que mudamos ou recusamos:**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+Nada
 
 **Por quê?**
 
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
----
-
-## Prompt 5 — Roteiro de fala da Parte 1 da apresentação
-
-### Prompt enviado à IA
-
-Considerando todo o contexto da nossa conversa anterior e os códigos que você gerou para este projeto (Protobuf, Central gRPC em Java e a interface TelaTotem em Swing):
-
-Preciso que você elabore o ROTEIRO DE FALA em português para a PRIMEIRA PARTE da nossa apresentação (a parte de CONCEITO e ARQUITETURA), que terá no máximo 8 minutos.
-
-Instruções e Restrições Estritas:
-
-1. REAPROVEITE O CONTEXTO: Use o conhecimento dos nossos códigos (Totem, Central, AcompanharSenha, Avisos, Java Swing), mas NÃO leia nem detalhe linhas de código especificamente nesta etapa (o código será detalhado na parte seguinte da apresentação).
-2. FOCO CONCEITUAL: Explique a arquitetura, a dinâmica de comunicação e a lógica por trás da solução.
-3. SUPORTE AOS SLIDES E FLUXOGRAMA: Siga a estrutura de uma apresentação moderna, orientando a explicação com base em um fluxograma de comunicação (Cliente -> Servidor -> Respostas em Stream -> UI).
-
-Estrutura Obrigatória do Roteiro (dividida minuto a minuto até completar 8 min):
-
-- [0:00 - 1:30] Introdução ao Problema e Solução:
-  * O cenário da Central de Senhas e o Totem em Swing.
-  * Por que NÃO usar Polling (requisições repetidas) e por que o Callback (Server Streaming) é a solução ideal.
-
-- [1:30 - 4:00] Explicação do Fluxo (Apoio no Fluxograma):
-  * Passo a passo: 1 requisição inicial enviando a Senha -> Canal HTTP/2 mantido aberto -> N respostas da Central ("faltam 3", "faltam 2", "sua vez").
-  * A diferença conceitual entre o modelo Unário (1 -> 1, usado para gerar a senha) e o Server Streaming (1 -> N, usado para o acompanhamento).
-
-- [4:00 - 5:30] Casos de Uso na Indústria:
-  * Aplicação prática dessa técnica no mercado (painéis hospitalares, tracking de entregas em tempo real, notificações push).
-
-- [5:30 - 8:00] Resposta para a Pergunta Obrigatória da Banca:
-  * "O que o gRPC fez por nós?" (Infraestrutura de rede, gerenciamento HTTP/2, serialização binária com Protobuf, detecção de desconexão).
-  * "O que continuou sendo nosso?" (A regra de negócio da fila, o formato e tempo das mensagens, a atualização da interface gráfica Swing e o tratamento de cancelamento).
-
-Por favor, escreva o roteiro em tom claro, acadêmico e direto, indicando exatamente o que o palestrante deve dizer em cada etapa.
-
-### Registro da resposta e das decisões do grupo
-
-**O que a IA respondeu:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**O que aceitamos da resposta:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**O que mudamos ou recusamos:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**Por quê?**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
----
-
-## Prompt 6 — Conteúdo dos slides da Parte 1
-
-### Prompt enviado à IA
-
-Atuando como um Especialista em Design de Apresentações Técnicas e gRPC:
-
-Preciso que você gere a estrutura e o conteúdo completo dos SLIDES para a PRIMEIRA PARTE da nossa apresentação (Conceito e Arquitetura do Callback gRPC - duração de 8 minutos).
-
-CONDIÇÕES E DIRETRIZES DE CONTEXTO (MUITO IMPORTANTE):
-
-1. USE O CONTEXTO INTERNO: Utilize as informações da nossa conversa e dos códigos desenvolvidos (Totem Swing, Central gRPC Java, Protobuf), tornando os exemplos extremamente ricos e específicos para o nosso cenário real.
-2. FOCO E PRECISÃO EXCLUSIVA: Não adicione NENHUMA informação do contexto que não esteja estritamente relacionada aos tópicos descritos abaixo. Evite fugir do tema ou antecipar o detalhamento de linhas de código da segunda parte.
-3. NÃO GERAR ROTEIRO DE FALA: O objetivo aqui é exclusivamente o CONTEÚDO DOS SLIDES (Títulos, Textos e Diagramas).
-
-DIRETRIZES DE DESIGN E VISUAL DOS SLIDES:
-
-- PALETA DE CORES: Tons pastéis escuros (Dark Pastel Palette - ex: azul-petróleo escuro, ardósia, verde-militar escuro ou roxo-escuro suave).
-- LEGIBILIDADE E CONTRASTE: Alto contraste entre o fundo escuro e as letras claras/pastéis. Fontes com tamanho AUMENTADO para leitura confortável à distância (fundo da sala de aula/auditório).
-- ESTILO VISUAL: Estilo moderno, marcante e estruturado — NÃO minimalista e NÃO limpo demais. Use cards, caixas explicativas, destaques e contornos sutis.
-- ELEMENTOS GRÁFICOS E FLUXOGRAMAS: Inclua representações visuais completas e explicativas (fluxogramas ASCII/Mermaid/Diagramas de Blocos) representando graficamente o nosso fluxo real (Totem -> Central -> Streams de Notificação -> UI).
-
-ESTRUTURA DOS SLIDES A SER GERADA:
-
-SLIDE 1: Título e Contexto Geral
-- Título principal e subtítulo moderno.
-- O problema da fila/central de senhas e a necessidade de atualização em tempo real.
-
-SLIDE 2: Polling vs. Callback gRPC (Server Streaming)
-- Tabela comparativa ou diagramas lado a lado de arquitetura.
-- Desvantagens do Polling tradicional no Totem vs. Vantagens da conexão persistente HTTP/2 com gRPC.
-
-SLIDE 3: Fluxograma da Arquitetura Real (O Coração do Projeto)
-- Representação gráfica/fluxograma detalhado:
-  * Cliente (Totem Swing) chama `AcompanharSenha`
-  * Servidor (Central Java) mantém o canal aberto
-  * Envio contínuo de eventos (`ON_HOLD` -> `3 à frente` -> `1 à frente` -> `CALLED`)
-- Relação Unário (1 -> 1) vs. Server Streaming (1 -> N).
-
-SLIDE 4: Casos de Uso na Indústria
-- Cards com aplicações práticas reais do conceito de Callback gRPC (Painéis Hospitalares, Rastreamento em Tempo Real, Notificações Push corporativas).
-
-SLIDE 5: Divisão de Responsabilidades (Resposta à Banca)
-- Duas colunas gráficas bem distintas:
-  * Coluna 1: "O que o gRPC resolveu" (Conexão HTTP/2, Serialização Protobuf, Gerenciamento do Stream e Desconexão).
-  * Coluna 2: "O que é Regra de Negócio Nossa" (Fila de senhas, lógica de disparo dos avisos, atualização da interface Swing).
-
-Por favor, forneça o conteúdo de cada slide detalhado, indicando exatamente o que é Título, Destaque, Diagrama/Fluxograma e Caixas de Texto.
-
-### Registro da resposta e das decisões do grupo
-
-**O que a IA respondeu:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**O que aceitamos da resposta:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**O que mudamos ou recusamos:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**Por quê?**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
----
-
-## Prompt 7 — Geração do arquivo final dos slides
-
-### Prompt enviado à IA
-
-Atuando como um Especialista em Design de Apresentações Técnicas e Desenvolvimento gRPC:
-
-VOCÊ DEVE GERAR O ARQUIVO COMPLETO E FINAL DA APRESENTAÇÃO DE SLIDES. Não forneça resumos, não forneça roteiro de fala e não faça apenas descrições textuais. Preciso do código/arquivo final pronto dos slides contendo exatamente a estrutura de conteúdo que definimos na etapa anterior.
-
-DIRETRIZES TÉCNICAS E ESTÉTICAS OBRIGATÓRIAS (NÃO IGNORAR):
-
-1. PALETA DE CORES (Dark Pastel - Alto Contraste para Projeção):
-   - Fundo principal: Azul-petróleo escuro (`#16262E`)
-   - Fundo dos Cards/Caixas: Ardósia (`#22404A`) com bordas de 2px em `#4F7F8C` e cantos arredondados.
-   - Texto principal/corpo: Branco-gelo (`#EAF1F3`) - ALTO CONTRASTE.
-   - Destaque 1 (Totem / Problema / Regras de Negócio): Coral pastel (`#E8A27C`).
-   - Destaque 2 (Central / Solução / gRPC): Verde-sálvia (`#9CCBA8`).
-   - Destaque 3 (Stream / Avisos / Fechamento): Lilás pastel (`#B7A6E0`).
-
-2. TIPOGRAFIA E TAMANHOS (Aumentados para o fundo da sala):
-   - Fonte: Sans-serif de traço grosso e legível (Inter, Montserrat, Segoe UI Semibold ou Roboto).
-   - Títulos principais: Mínimo de 40pt a 44pt (Destacados em Coral ou Verde-sálvia).
-   - Subtítulos e Cabeçalhos de Cards: Mínimo de 28pt a 30pt.
-   - Texto do corpo / tabelas: Mínimo de 22pt a 26pt.
-   - Rótulos de diagramas / legendas: Mínimo de 20pt a 22pt.
-
-3. ESTILO E DIAGRAMAÇÃO:
-   - Visual moderno e estruturado (NÃO minimalista e NÃO limpo demais).
-   - Máximo de 5 caixas/cards por slide, mantendo o conteúdo direto em tópicos.
-   - RENDERIZAR OS FLUXOGRAMAS E DIAGRAMAS VISUALMENTE: Inclua todos os diagramas de sequência e fluxogramas da arquitetura (Totem <-> Central) usando gráficos limpos, caixas estruturadas, setas e tabelas estilizadas com as cores da paleta.
-
-ESTRUTURA COMPLETA DOS SLIDES A SEREM GERADOS:
-
-- SLIDE 1: Título: "Central de Senhas em Tempo Real" | Subtítulo: "Callback com gRPC: Server Streaming entre Totem (Java Swing) e Central (Java)" | Destaque topo lilás | Diagrama visual Totem <-> Central | 3 Cards (O cenário, O problema, A necessidade).
-- SLIDE 2: Título: "Como o Totem fica sabendo? Polling vs. Callback" | Diagramas lado a lado de Polling (borda coral) vs Callback Server Streaming (borda verde-sálvia) | Tabela comparativa visual de 5 critérios | Faixa de destaque no rodapé verde-sálvia.
-- SLIDE 3: Título: "Fluxo de Comunicação: Totem → Central → Stream → Interface" | Diagrama de sequência completo (~70% da tela) mapeando o fluxo real: ① PegarSenha (Unário 1->1) -> ② AcompanharSenha (Streaming 1->N) -> ③ Canal HTTP/2 ABERTO -> ④ Avisos ("faltam 3", "faltam 2", "faltam 1", "sua vez, guichê 2") -> ⑤ Fim do fluxo -> ⑥ Interface Swing | 2 Cards explicativos à direita (Unário vs Server Streaming).
-- SLIDE 4: Título: "Onde esse padrão é usado de verdade" | Subtítulo de aplicação | 3 Cards com ícones grandes e bordas coloridas (Hospitalar - coral, Rastreamento - verde, Push - lilás) + Faixa inferior com paralelo do nosso projeto.
-- SLIDE 5: Título: "O que o gRPC fez por nós? O que continuou sendo nosso?" | Duas colunas em cards grandes separadas: Coluna 1 "O QUE O gRPC RESOLVEU" (5 tópicos) e Coluna 2 "O QUE É REGRA DE NEGÓCIO NOSSA" (5 tópicos) | Seta central "contrato .proto" | Destaque final no rodapé.
-
-Gere agora o arquivo visual completo dos slides com todo o design, paleta de cores e diagramas aplicados.
-
-### Registro da resposta e das decisões do grupo
-
-**O que a IA respondeu:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**O que aceitamos da resposta:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**O que mudamos ou recusamos:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**Por quê?**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
----
-
-## Prompt 8 — Conversão da conversa em `PROMPTS.md`
-
-### Prompt enviado à IA
-
-Quero que você transforme toda esta conversa atual em um único documento Markdown (`.md`), pronto para ser salvo ou baixado.
-
-Instruções:
-
-1. Considere todo o histórico disponível desta conversa, desde a primeira mensagem até a mais recente, incluindo minhas perguntas e suas respostas.
-2. Preserve todas as informações relevantes, exemplos, explicações, comandos, trechos de código e decisões tomadas durante a conversa.
-3. Reproduza a formatação usando Markdown padrão: títulos (`#`, `##`, `###`), listas, tabelas, checklists, citações e blocos de código com a linguagem especificada.
-4. Converta elementos visuais ou interativos em alternativas compatíveis com Markdown, mantendo o máximo possível da estrutura original.
-5. Organize o conteúdo em uma sequência lógica, eliminando repetições desnecessárias sem remover informações importantes.
-6. Não invente conteúdo nem afirme que incluiu mensagens às quais não tem acesso.
-7. Se o histórico completo não estiver disponível no seu contexto, informe essa limitação antes de gerar o documento.
-8. Gere o documento completo, com um título apropriado, pronto para ser salvo como um arquivo `.md`.
-
-Nome sugerido: `PROMPTS.md`.
-Não me entregue apenas um resumo. Quero preservar o conteúdo técnico e as informações importantes de toda a conversa, com a formatação convertida para Markdown.
-Se houver suporte à criação de arquivos, crie o arquivo `.md` para download. Caso contrário, apresente o conteúdo Markdown completo para que eu possa salvá-lo manualmente.
-
-### Registro da resposta e das decisões do grupo
-
-**O que a IA respondeu:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**O que aceitamos da resposta:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**O que mudamos ou recusamos:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**Por quê?**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
----
-
-## Prompt 9 — Reorganização do `PROMPTS.md` por prompt
-
-### Prompt enviado à IA
-
-Edite o arquivo Markdown (.md) que você acabou de gerar, reorganizando seu conteúdo em seções específicas para cada prompt utilizado na conversa.
-Não crie uma seção de orientações recebidas, não acrescente instruções extras e não invente conteúdo. O objetivo é apenas organizar os prompts e criar espaços para registrar as respostas e decisões do grupo.
-
-Estrutura obrigatória
-
-Crie uma seção para cada prompt existente na conversa, seguindo esta estrutura:
-
-- Prompt 1 — [Título ou objetivo do prompt]
-- Prompt enviado à IA: Reproduza aqui o prompt original completo, preservando seu conteúdo e sua formatação, inclusive os blocos de código relevantes.
-- Registro da resposta e das decisões do grupo
-  - O que a IA respondeu: [ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-  - O que aceitamos da resposta: [ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-  - O que mudamos ou recusamos: [ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-  - Por quê? [ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-Repita essa mesma estrutura para cada prompt encontrado no histórico da conversa, numerando as seções sequencialmente: Prompt 2, Prompt 3, Prompt 4 e assim por diante.
-
-Regras importantes
-
-1. Identifique e organize os prompts que realmente aparecem na conversa, sem inventar prompts novos.
-2. Preserve o texto original de cada prompt, sem resumir nem alterar seu significado.
-3. Coloque o espaço de registro imediatamente após o respectivo prompt, na mesma seção.
-4. Deixe os campos de resposta vazios, para que o grupo os preencha manualmente.
-5. Se um prompt contiver código, mantenha-o em um bloco de código com a linguagem apropriada.
-6. Evite repetir o mesmo prompt em várias seções.
-7. Preserve as demais informações relevantes do documento existente, organizando-as sem duplicações desnecessárias.
-8. Utilize Markdown padrão, compatível com o GitHub, com títulos hierárquicos e separadores visuais.
-9. Não preencha os campos com respostas hipotéticas, exemplos inventados ou justificativas presumidas.
-
-Resultado esperado: um único arquivo Markdown organizado cronologicamente, com uma seção por prompt e, logo abaixo de cada um, espaços claramente identificados para registrar o que a IA respondeu, o que o grupo aceitou ou mudou e por quê.
-Atualize o arquivo existente e disponibilize-o para download, se houver suporte à criação de arquivos. Caso contrário, apresente o Markdown completo e atualizado.
-
-### Registro da resposta e das decisões do grupo
-
-**O que a IA respondeu:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**O que aceitamos da resposta:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**O que mudamos ou recusamos:**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
-
-**Por quê?**
-
-[ESPAÇO PARA PREENCHIMENTO PELO GRUPO]
+O código gerado é simples, correto e tem tudo o que foi pedido
 
 ---
 
@@ -1401,309 +1107,6 @@ O `if` evita erro se nunca houve acompanhamento; `cancel(null)` cancela (sem exc
 
 ---
 
-## Anexo E — Roteiro de fala, Parte 1 (8 min) (resposta ao Prompt 5)
-
-**Convenção:** o texto entre colchetes é indicação de slide ou gesto; o restante é a fala.
-
-### [0:00 - 1:30] Introdução ao problema e à solução
-
-*[Slide 1: título "Central de Senhas com gRPC: Callback via Server Streaming"]*
-
-> "Bom dia a todos. Nosso projeto simula uma **Central de Senhas**, como as que vemos em bibliotecas, bancos e setores de atendimento. Ele tem duas pontas: o **Totem**, uma aplicação desktop em Java Swing onde a pessoa informa o nome, escolhe o tipo de atendimento e retira a senha; e a **Central**, o servidor que gera as senhas e controla a fila."
-
-*[Slide 2: "E depois de pegar a senha?"]*
-
-> "Retirar a senha é só o começo. A pessoa quer saber **quando vai ser chamada**. Ela precisa ver 'faltam 3', 'faltam 2' e, por fim, 'sua vez, guichê 2', na própria tela do totem. Surge então a pergunta de arquitetura: **como o totem fica sabendo dessas mudanças?**"
-
-*[Slide 3: Polling x Callback lado a lado]*
-
-> "A primeira ideia, a mais intuitiva, é o **polling**: o totem pergunta à Central a cada segundo 'já mudou alguma coisa?'. Funciona, mas tem três problemas:
-> - **Desperdício:** a maioria das perguntas retorna 'nada mudou', e cada uma consome rede e processamento.
-> - **Latência:** o aviso só chega na próxima pergunta, então a atualização nunca é imediata.
-> - **Escala:** com centenas de totens perguntando o tempo todo, a Central gasta a maior parte do esforço respondendo 'não'.
->
-> A segunda abordagem é o **callback**, também chamado de *push*. O totem faz **uma única pergunta**: 'acompanhe esta senha para mim'. A partir daí, **quem fala é a Central**, e ela avisa somente quando há novidade. Em gRPC, isso se implementa com o **Server Streaming**. Foi essa a solução que adotamos."
-
-### [1:30 - 4:00] Explicação do fluxo (apoio no fluxograma)
-
-*[Slide 4: fluxograma Totem → Central → Respostas em Stream → Interface. Apontar cada etapa à medida que explica.]*
-
-1. **A chamada unária (1 → 1).** "O usuário clica em 'Pegar Senha'. O totem envia **um pedido** com nome, tipo e local, e a Central devolve **uma resposta**: a senha, por exemplo 'N-001'. É o modelo **Unário**: uma pergunta, uma resposta, e a conversa termina."
-2. **A requisição de acompanhamento.** "Com a senha em mãos, o totem faz uma **segunda chamada**, enviando **uma única mensagem: a própria senha**. Assim a Central sabe qual senha está sendo observada."
-3. **O canal permanece aberto.** "Normalmente, depois de responder, a conexão deixa de ter utilidade. No Server Streaming, **a chamada continua aberta**. Isso é possível porque o gRPC trabalha sobre **HTTP/2**, que permite manter um canal ativo e trafegar várias mensagens em sequência dentro de uma mesma chamada." *[Apontar a seta contínua do servidor para o cliente.]*
-4. **As N respostas.** "Pelo canal aberto, a Central envia, ao longo do tempo, **vários avisos**: 'faltam 3', depois 'faltam 2', 'faltam 1' e, por fim, 'sua vez, guichê 2'. O totem **não pergunta nada entre um aviso e outro**. Ele apenas escuta."
-5. **Atualização da interface.** "Cada aviso recebido é repassado para a **interface Swing**, que atualiza a mensagem na tela. Como a recepção é **assíncrona**, a tela **não trava**: o usuário continua interagindo com o totem."
-6. **Encerramento.** "O fluxo termina por **conclusão normal**, quando a Central envia o último aviso e fecha o canal, ou por **cancelamento**, se o totem for fechado no meio. Nesse caso, a Central detecta e registra o ocorrido."
-
-*[Slide 5: tabela comparativa]*
-
-| | **Unário** | **Server Streaming** |
-|---|---|---|
-| Requisições | 1 | 1 |
-| Respostas | 1 | **N** |
-| Quem inicia cada mensagem | Cliente | **Servidor (após o pedido inicial)** |
-| Uso no projeto | Gerar a senha | Acompanhar a senha |
-
-> "Na prática: o unário é uma **pergunta com resposta**; o Server Streaming é uma **assinatura**: peço uma vez e passo a receber atualizações."
-
-### [4:00 - 5:30] Casos de uso na indústria
-
-*[Slide 6: "Onde isso é usado de verdade?"]*
-
-> "Esse padrão não é exclusivo de painéis de senha. Ele aparece sempre que **o servidor sabe primeiro** e o cliente precisa ser informado **sem pedir**.
-> - **Painéis de chamada em hospitais e clínicas:** o painel da recepção e o celular do paciente refletem a fila quase em tempo real, sem recarregar a tela.
-> - **Rastreamento de entregas e corridas:** status do pedido e posição do entregador chegam continuamente, como fluxo de eventos.
-> - **Notificações push:** alertas de mensagens, pagamentos e atualizações chegam ao dispositivo assim que o evento ocorre.
-> - Também **cotações financeiras** e **painéis de monitoramento** de servidores.
->
-> O ponto em comum: **uma conexão aberta, eventos fluindo do servidor para o cliente**. Nosso projeto é uma versão em escala acadêmica desse mecanismo."
-
-### [5:30 - 8:00] Resposta à pergunta obrigatória da banca
-
-*[Slide 7: "O que o gRPC fez por nós? E o que continuou sendo nosso?", duas colunas]*
-
-> "Vamos responder à pergunta central: **qual foi a contribuição do gRPC e qual foi a nossa responsabilidade?**"
-
-**O que o gRPC fez por nós** *(coluna da esquerda)*
-
-1. **Rede e HTTP/2:** abrir a conexão, mantê-la ativa e multiplexar as mensagens; não escrevemos *sockets*.
-2. **Serialização binária com Protobuf:** o contrato é descrito uma vez, o compilador gera as classes, e os dados trafegam em formato binário compacto e tipado.
-3. **Contrato compartilhado:** o `.proto` define serviço, métodos e mensagens e garante que Totem e Central falem a mesma língua.
-4. **Modelo de chamada:** distinção entre unário e streaming, envio de múltiplas mensagens e encerramento ordenado.
-5. **Detecção de desconexão:** se o totem fecha ou a rede cai, **o gRPC percebe** e notifica a Central.
-
-**O que continuou sendo nosso** *(coluna da direita)*
-
-1. **Regra de negócio:** geração da senha, prefixo normal/prioritário, numeração sequencial e, numa versão completa, a lógica real da fila.
-2. **Conteúdo e ritmo dos avisos:** o gRPC entrega, mas **nós decidimos** o que dizer, em que ordem e com que intervalo.
-3. **Atualização da interface Swing:** mostrar o aviso de forma segura e sem travar, respeitando a thread própria dos componentes gráficos.
-4. **Tratamento do cancelamento:** o gRPC *detecta e avisa*; **o que fazer com isso** é nosso (registrar e interromper o envio; num sistema real, liberar a senha ou reorganizar a fila).
-5. **Ciclo de vida do acompanhamento:** quando iniciar, quando cancelar e o que ocorre se o usuário pegar nova senha com outro acompanhamento em andamento.
-
-*[Slide 8: frase-resumo]*
-
-> "Em uma frase: **o gRPC resolveu o 'como' da comunicação; nós resolvemos o 'o quê' e o 'quando' da aplicação.** Com isso, encerro a parte conceitual. Na sequência, meu colega detalha a implementação no `.proto`, na Central e no Totem."
-
-### Quadro de tempo
-
-| Intervalo | Bloco | Slides |
-|---|---|---|
-| 0:00 - 1:30 | Problema e solução (polling x callback) | 1 a 3 |
-| 1:30 - 4:00 | Fluxo e unário x streaming | 4 e 5 |
-| 4:00 - 5:30 | Casos de uso | 6 |
-| 5:30 - 8:00 | Pergunta da banca | 7 e 8 |
-
-### Dicas ao palestrante
-
-- **Fluxograma como fio condutor:** aponte cada seta; numere os passos de 1 a 6 no desenho.
-- **Ritmo:** o bloco da banca é o mais importante (2:30). Se atrasar, **encurte os casos de uso**, nunca a resposta à banca.
-- **Evite jargão sem explicar:** complete "HTTP/2" com "um canal que permanece aberto" e "assíncrono" com "a tela continua livre enquanto espera".
-- **Transição:** passe a palavra ao colega sem antecipar nenhuma linha de código.
-- **Possível pergunta:** "Por que não usar WebSocket?" Resposta curta: o gRPC oferece, além do streaming, contrato tipado, geração de código e serialização eficiente, tudo integrado.
-
----
-
-## Anexo F — Conteúdo dos slides (resposta ao Prompt 6)
-
-### Guia visual
-
-| Elemento | Especificação |
-|---|---|
-| Fundo | Azul-petróleo escuro `#16262E` |
-| Cards | Ardósia `#22404A`, borda de 2 px em `#4F7F8C`, cantos arredondados |
-| Texto principal | Branco-gelo `#EAF1F3` |
-| Destaque 1 (Totem / problema / regras de negócio) | Coral pastel `#E8A27C` |
-| Destaque 2 (Central / solução / gRPC) | Verde-sálvia `#9CCBA8` |
-| Destaque 3 (stream / avisos / fechamento) | Lilás pastel `#B7A6E0` |
-| Tamanhos | Título 44 pt, subtítulo 30 pt, corpo mínimo 26 pt, rótulos de diagrama mínimo 22 pt |
-| Fonte | Sans-serif de traço grosso (Segoe UI Semibold, Montserrat ou Inter) |
-| Regra | No máximo 5 caixas por slide, frases curtas |
-
-### Slide 1: Título e contexto geral
-
-- **Título:** Central de Senhas em Tempo Real
-- **Subtítulo:** Callback com gRPC: Server Streaming entre Totem (Java Swing) e Central (Java)
-- **Destaque (faixa lilás no topo):** Sistemas Distribuídos | Parte 1: Conceito e Arquitetura
-
-```text
- ┌───────────────┐                   ┌───────────────┐
- │    TOTEM      │ ── pega senha ──▶ │    CENTRAL    │
- │  (Java Swing) │                   │  (servidor)   │
- │               │ ◀─ "faltam 3" ─── │               │
- └───────────────┘                   └───────────────┘
-```
-
-| Card | Título | Texto |
-|---|---|---|
-| 1 | O cenário | Pessoas retiram senha no **Totem** e aguardam o atendimento. |
-| 2 | O problema | Depois de pegar a senha, o usuário precisa saber **quando será chamado**. |
-| 3 | A necessidade | A tela deve mostrar **"faltam 3", "faltam 2", "sua vez, guichê 2"** assim que mudar, sem o usuário fazer nada. |
-
-### Slide 2: Polling vs. Callback gRPC (Server Streaming)
-
-- **Título:** Como o Totem fica sabendo? Polling vs. Callback
-
-**Card esquerdo (borda coral): POLLING**
-
-```text
- TOTEM                    CENTRAL
-   │── "mudou algo?" ──▶    │
-   │◀─── "não" ─────────    │
-   │── "mudou algo?" ──▶    │
-   │◀─── "não" ─────────    │
-   │── "mudou algo?" ──▶    │
-   │◀─── "faltam 3" ────    │
-        (várias chamadas)
-```
-
-**Card direito (borda verde-sálvia): CALLBACK (Server Streaming)**
-
-```text
- TOTEM                    CENTRAL
-   │── "acompanhe minha ──▶ │
-   │       senha" (1x)      │
-   │◀═══ "faltam 3" ════    │
-   │◀═══ "faltam 2" ════    │
-   │◀═══ "sua vez" ═════    │
-     (1 chamada, N avisos)
-```
-
-| Critério | Polling | Callback gRPC |
-|---|---|---|
-| Requisições | Repetidas e constantes | **Uma só** |
-| Latência do aviso | Até o próximo ciclo de consulta | **Imediata** |
-| Tráfego inútil | Muitas respostas "nada mudou" | **Só quando há novidade** |
-| Carga na Central | Cresce com nº de totens × frequência | **Menor e previsível** |
-| Quem toma a iniciativa | O Totem, sempre | **A Central, após o pedido inicial** |
-
-- **Destaque (faixa verde-sálvia no rodapé):** Canal HTTP/2 persistente: o Totem pergunta uma vez e passa a escutar.
-
-### Slide 3: Fluxograma da arquitetura real
-
-- **Título:** Fluxo de Comunicação: Totem → Central → Stream → Interface
-
-```text
-┌────────────────────┐                          ┌────────────────────────┐
-│   TOTEM (Swing)    │                          │    CENTRAL (Java)      │
-│ [Interface gráfica]│                          │ [Gera senhas]          │
-│ [Stub gRPC]        │                          │ [Controla os avisos]   │
-└─────────┬──────────┘                          └───────────┬────────────┘
-          │  ① PegarSenha(PedidoSenha)   ── UNÁRIO 1 → 1 ──▶│
-          │◀─────────────── Senha "N-001" ──────────────────│
-          │  ② AcompanharSenha(Senha)  ── STREAMING 1 → N ─▶│
-          │          ③ CANAL HTTP/2 PERMANECE ABERTO        │
-          │◀════════════════════════════════════════════════│
-          │◀══ ④ Aviso: "faltam 3"  ════════════════════════│
-          │◀══ ④ Aviso: "faltam 2"  ════════════════════════│
-          │◀══ ④ Aviso: "faltam 1"  ════════════════════════│
-          │◀══ ④ Aviso: "sua vez, guichê 2" ════════════════│
-          │◀──────── ⑤ Fim do fluxo (onCompleted) ──────────│
-          ▼
-┌────────────────────────────────────┐
-│ ⑥ INTERFACE SWING                  │
-│ Cada aviso atualiza a mensagem     │
-│ na tela, sem travar a janela       │
-└────────────────────────────────────┘
-```
-
-```mermaid
-sequenceDiagram
-    participant T as Totem (Swing)
-    participant C as Central (Java)
-    T->>C: 1. PegarSenha(PedidoSenha) [Unário]
-    C-->>T: Senha "N-001"
-    T->>C: 2. AcompanharSenha(Senha) [Streaming]
-    Note over T,C: 3. Canal HTTP/2 permanece aberto
-    C-->>T: 4. Aviso "faltam 3"
-    C-->>T: Aviso "faltam 2"
-    C-->>T: Aviso "faltam 1"
-    C-->>T: Aviso "sua vez, guichê 2"
-    C-->>T: 5. Fim do fluxo
-    Note over T: 6. Interface Swing atualiza a tela
-```
-
-| Card (borda) | Título | Texto |
-|---|---|---|
-| Coral | UNÁRIO (1 → 1) | **Gerar a senha.** O Totem pergunta, a Central responde e a conversa termina. |
-| Lilás | SERVER STREAMING (1 → N) | **Acompanhar a senha.** Uma requisição, várias respostas ao longo do tempo. |
-
-- **Destaque (faixa lilás):** Entre um aviso e outro, o Totem não faz nenhuma nova pergunta.
-
-> **Observação da resposta:** os nomes `ON_HOLD`, `3 à frente`, `1 à frente` e `CALLED` do pedido **não existem no código**. Os slides usam os avisos reais ("faltam 3", "faltam 2", "faltam 1", "sua vez, guichê 2"). Para mantê-los, seria preciso alterar a Central.
-
-### Slide 4: Casos de uso na indústria
-
-- **Título:** Onde esse padrão é usado de verdade
-- **Subtítulo:** Sempre que o servidor sabe primeiro e o cliente precisa ser avisado sem pedir.
-
-| Card | Título | Texto | Paralelo com o projeto |
-|---|---|---|---|
-| 🏥 (coral) | Painéis Hospitalares | Painel da recepção e celular do paciente refletem a fila de chamada sem recarregar a tela. | É o nosso Totem recebendo "faltam 3". |
-| 🛵 (verde-sálvia) | Rastreamento em Tempo Real | Status do pedido e posição do entregador ou motorista chegam continuamente ao app. | Uma assinatura que recebe vários eventos. |
-| 🔔 (lilás) | Notificações Push Corporativas | Alertas de pagamento, mensagens e aprovações chegam ao dispositivo no instante do evento. | A Central empurra o aviso, o cliente não consulta. |
-
-- **Faixa inferior:** Também: cotações financeiras e painéis de monitoramento de servidores.
-- **Destaque final:** Padrão comum: **uma conexão aberta, eventos fluindo do servidor para o cliente.**
-
-### Slide 5: Divisão de responsabilidades (resposta à banca)
-
-- **Título:** O que o gRPC fez por nós? O que continuou sendo nosso?
-
-| ⚙️ O QUE O gRPC RESOLVEU (verde-sálvia) | 🧠 O QUE É REGRA DE NEGÓCIO NOSSA (coral) |
-|---|---|
-| **Conexão HTTP/2:** abre, mantém e organiza o canal; nenhum *socket* escrito por nós. | **Fila de senhas:** numeração sequencial e prefixo Normal ou Prioritário. |
-| **Serialização Protobuf:** mensagens binárias, compactas e tipadas, geradas do `.proto`. | **Lógica dos avisos:** o que dizer, em que ordem e em que intervalo. |
-| **Contrato compartilhado:** o `.proto` garante a mesma língua. | **Interface Swing:** mostrar o aviso sem travar a janela. |
-| **Gerenciamento do stream:** várias mensagens e encerramento ordenado. | **Tratamento do cancelamento:** o gRPC avisa; nós decidimos (registrar e parar o envio). |
-| **Detecção de desconexão:** percebe que o Totem saiu e avisa a Central. | **Ciclo de vida:** quando iniciar e encerrar o acompanhamento. |
-
-- **Seta central entre as colunas:** `contrato .proto`
-- **Destaque final (faixa lilás):** O gRPC resolveu o **"como"** da comunicação. Nós resolvemos o **"o quê"** e o **"quando"** da aplicação.
-
-### Distribuição de tempo sugerida
-
-| Slide | Tempo |
-|---|---|
-| 1 | ~1:00 |
-| 2 | ~1:30 |
-| 3 | ~2:30 (slide central) |
-| 4 | ~1:00 |
-| 5 | ~2:00 |
-
----
-
-## Anexo G — Arquivo final dos slides (resposta ao Prompt 7)
-
-Deck de 5 slides em formato 16:9 (canvas de 1920 px), publicado como artefato:
-
-- Link: <https://claude.ai/artifact/BfxPR5WKepZJmdQuAJXpWh>
-- Fundo `#16262E`, cards `#22404A` com borda `#4F7F8C`, texto `#EAF1F3`, destaques coral `#E8A27C`, verde-sálvia `#9CCBA8` e lilás `#B7A6E0`; fonte Inter.
-- Slides: `capa` (1), `polling` (2), `fluxo` (3), `usos` (4) e `divisao` (5).
-- Todos os diagramas (Totem ↔ Central, polling vs. callback, sequência com os passos ① a ⑥) foram desenhados como gráficos vetoriais nos próprios slides.
-
-**Premissas e observações registradas na resposta:**
-
-- Os títulos ficaram entre 56 e 84 px (cerca de 28 a 42 pt em um slide de PowerPoint) e os corpos entre 26 e 34 px, para caber o conteúdo sem estourar os slides mais densos (2, 3 e 5). Alternativa: dividir o slide 2 em dois para ampliar as fontes.
-- Os avisos mantidos são os do código real ("faltam 3", "faltam 2", "faltam 1", "sua vez, guichê 2").
-- O layout não foi aberto/conferido visualmente após a geração; recomenda-se revisar os slides 2 e 3, os mais carregados.
-
----
-
-## Anexo H — Resumo de decisões técnicas e checklist
-
-### Decisões de projeto (conforme as respostas da IA)
-
-| Tema | Decisão |
-|---|---|
-| Modelo de comunicação | Server Streaming (`rpc AcompanharSenha (Senha) returns (stream Aviso)`), em vez de *polling*. |
-| Mensagem de requisição | Reaproveitar `Senha` (sem criar nova mensagem). |
-| Mensagem de resposta | Nova `Aviso { string mensagem = 1; }`. |
-| Central | `ServerCallStreamObserver` com `setOnCancelHandler` e `isCancelled`; avisos fixos a cada 2 s com `Thread.sleep` (mais simples); `onCompleted` ao final. |
-| Cancelamento | Registrado na Central via `println`; tratamento extra de `StatusRuntimeException` para a condição de corrida. |
-| Totem | Stub assíncrono (`newStub`) + `StreamObserver<Aviso>`; `Context.withCancellation()` para cancelar; `SwingUtilities.invokeLater` para a EDT; `WindowAdapter.windowClosing` com `awaitTermination(1 s)`. |
-| Interface | Reaproveitado o `lblMensagem`; `initComponents()` não alterado. |
-| Bibliotecas | Nenhuma extra (somente gRPC e Java). |
-
 ### Checklist técnico
 
 - [ ] Atualizar o `.proto` e **copiá-lo idêntico** para Central e Totem.
@@ -1715,10 +1118,3 @@ Deck de 5 slides em formato 16:9 (canvas de 1920 px), publicado como artefato:
 - [ ] Testar o cancelamento (fechar o Totem no meio).
 - [ ] Testar uma segunda senha com a primeira em andamento.
 - [ ] Revisar os slides e ensaiar o roteiro de 8 minutos.
-
-### Limitações conhecidas
-
-- `Thread.sleep` ocupa uma thread do servidor por acompanhamento (em produção: `ScheduledExecutorService` ou eventos reais da fila).
-- Avisos simulados, independentes da fila real.
-- `pegarSenha` ainda é bloqueante e roda na EDT (já era assim no código original).
-- `usePlaintext()` (sem TLS) é aceitável apenas em laboratório.
