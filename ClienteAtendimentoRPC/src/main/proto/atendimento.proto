@@ -1,0 +1,31 @@
+syntax = "proto3";
+package atendimento;
+option java_package = "com.mycompany.atendimentorpc";
+option java_multiple_files = true;
+
+service AtendimentoService {
+    rpc PegarSenha (PedidoSenha) returns (Senha);
+
+    rpc AcompanharSenha (Senha) returns (stream Aviso);
+}
+
+enum TipoAtendimento {
+    NORMAL = 0;
+    PRIORITARIO = 1;
+}
+
+message PedidoSenha {
+    string nome = 1;
+    TipoAtendimento tipo = 2;
+    string local = 3;
+}
+
+message Senha {
+    int32 numero = 1;
+    string codigo = 2;
+    string mensagem = 3;
+}
+
+message Aviso {
+    string mensagem = 1;
+}

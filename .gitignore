@@ -1,0 +1,49 @@
+# ==========================================
+# Java / Maven
+# ==========================================
+target/
+*.class
+
+# ==========================================
+# NetBeans
+# ==========================================
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/dist/
+/build/
+
+
+# ==========================================
+# Visual Studio Code (configurações locais)
+# ==========================================
+.vscode/
+
+# ==========================================
+# Logs e arquivos temporários
+# ==========================================
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.orig
+*~
+
+# ==========================================
+# Sistema operacional
+# ==========================================
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+
+#=========================================
+# Arquivos de configuração locais
+# ==========================================
+config.local.properties
+application-local.properties
