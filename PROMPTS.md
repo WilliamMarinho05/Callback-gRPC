@@ -95,7 +95,7 @@ Por favor, forneça primeiro apenas as alterações do arquivo .proto com as exp
 
 **O que a IA respondeu:**
 
-Respondeu com o arquivo .proto, acrescentando a declaração do server especifico pro streaming das mensagens e inicializou o aviso (as mensagens enviadas)
+Respondeu com o arquivo .proto, acrescentando a declaração do serviço especifico pro streaming das mensagens e inicializou o aviso (as mensagens enviadas)
 
 **O que aceitamos da resposta:**
 
@@ -107,7 +107,7 @@ Nada dessa resposta foi recusada
 
 **Por quê?**
 
-O código gerado é simples, organizado e acima de tudo está correto
+O código gerado é simples, organizado e acima de tudo, está correto
 
 ---
 
@@ -121,7 +121,7 @@ Nessa parte 1, explique de forma didática o que aconteceu no código. Também a
 
 **O que a IA respondeu:**
 
-Gerou uma explicação sobre o que ele fez na resposta do primeiro prompt, abordou sobre a necessidade do .proto ser idêntico nos dois projetos, também apontou erros comuns e citou conceitos importantes
+Gerou uma explicação sobre o que ele fez na resposta do primeiro prompt, abordou a necessidade do .proto ser idêntico nos dois projetos, também apontou erros comuns e citou conceitos importantes
 
 **O que aceitamos da resposta:**
 
@@ -156,7 +156,7 @@ Respondeu com o código  do AtendimentoServiceImpl.java completo, destacando o q
 
 **O que aceitamos da resposta:**
 
-Aceitamos tudo, o código gerado está correto, ele adicionou apenas os novos imports e a função responsável pelo callback. Ela não utilizou nenhuma biblioteca externa ou algo que não esteja no material e tem o código limpo e simples com uma lista das mensagens utilizadas, um bloco try responsável por enviar as mensagens com uma thread sleep para ter uma pausa antes de enviar a próxima e dois catch para exibir mensagens de erro.
+Aceitamos tudo, o código gerado está correto, ele adicionou apenas os novos imports e a função responsável pelo callback. O código não utiliza nenhuma biblioteca externa ou recurso fora do material. Ele é limpo e simples, contendo uma lista de mensagens, um bloco try responsável por enviá-las com Thread.sleep para pausar entre os envios e dois blocos catch para tratar eventuais erros e cancelamentos
 
 **O que mudamos ou recusamos:**
 
@@ -490,7 +490,7 @@ public class TelaTotem extends javax.swing.JFrame {
 
 **O que a IA respondeu:**
 
-Com o código da TelaTotem: incluindo novos imports, a declaração de um stub assíncrono para o streaming das mensagens, inicializou o contexto usado para acompanhar o status das mensagens (através dele que conseguimos cancelar o streaming das mensagens), utilizou o método addWindowListener para cancelar as mensagens caso a janela seja fechada (Utilizando a função encerrar acompanhamento e depois derrubando a conexão com o canal.shutdown()), chamou a função acompanharSenha(senha) no btnPegarSenha (Função criada abaixo do btn), criou a função acompanharSenha() para iniciar o streaming das mensagens e criou a função encerrarAcompanhamento() para encerrar o fluxo de mensagens
+Respondeu com o código completo da TelaTotem.java, incluindo os novos imports e a declaração do stub assíncrono para o streaming. Inicializou o contexto (Context.CancellableContext) para monitorar e cancelar o fluxo de mensagens, além de utilizar o addWindowListener para encerrar o acompanhamento e fechar o canal (canal.shutdown()) caso a janela seja fechada. Também integrou a chamada da função acompanharSenha(senha) ao botão btnPegarSenha, criando as funções acompanharSenha() e encerrarAcompanhamento().
 
 **O que aceitamos da resposta:**
 
